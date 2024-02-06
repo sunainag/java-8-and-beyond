@@ -2,7 +2,7 @@ package com.lambda;
 
 interface Calculator{
 //    void switchOn();
-    void mul(int input);
+    int sub(int a, int b);
 }
 public class CalculatorImpl{
 //    @Override
@@ -16,7 +16,10 @@ public class CalculatorImpl{
         //()            ->          {body}
         //1. No need of method name/prefix, as this is anynonymous fn
         //2. Assign it to interface
-        Calculator calculator = (input)->System.out.println("Lambda expr with arg"+ input);
-        calculator.mul(1234);
+        //3. no need to pass data type
+        Calculator calculator = (i1, i2)->{
+                                            return i2-i1;
+                                        };
+        System.out.println("Lambda expr with 2 args and return type: "+ calculator.sub(1, 4));
     }
 }
