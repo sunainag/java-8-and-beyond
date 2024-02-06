@@ -1,7 +1,8 @@
 package com.lambda;
 
 interface Calculator{
-    void switchOn();
+//    void switchOn();
+    void mul(int input);
 }
 public class CalculatorImpl{
 //    @Override
@@ -15,7 +16,7 @@ public class CalculatorImpl{
         //()            ->          {body}
         //1. No need of method name/prefix, as this is anynonymous fn
         //2. Assign it to interface
-        Calculator calculator = ()->System.out.println("Lambda expr");
-        calculator.switchOn();
+        Calculator calculator = (input)->System.out.println("Lambda expr with arg"+ input);
+        calculator.mul(1234);
     }
 }
