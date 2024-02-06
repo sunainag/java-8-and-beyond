@@ -17,9 +17,7 @@ public class CalculatorImpl{
         //1. No need of method name/prefix, as this is anynonymous fn
         //2. Assign it to interface
         //3. no need to pass data type
-        Calculator calculator = (i1, i2)->{
-                                            return i2-i1;
-                                        };
+        Calculator calculator = (i1, i2)->i2-i1;
         System.out.println("Lambda expr with 2 args and return type: "+ calculator.sub(1, 4));
     }
 }
