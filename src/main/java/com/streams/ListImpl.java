@@ -1,7 +1,7 @@
 package com.streams;
 
-import com.lambda.Book;
-import com.lambda.BookDao;
+import com.commons.Book;
+import com.commons.BookDao;
 
 import java.util.*;
 import java.util.stream.Collectors;
