@@ -1,11 +1,22 @@
-1. Functional interfaces like 
+1. Collection vs Stream
+   Collection is an in-memory data structure, which holds all the values that the data structure currently has.
+   Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result.
+   1. A stream is not a data structure instead it takes input from the Collections, Arrays, or I/O channels.
+   2. Streams don’t change the original data structure, they only provide the result as per the pipelined methods.
+   3. Each intermediate operation is lazily executed and returns another stream as a result, hence various intermediate operations can be pipelined. Terminal operations mark the end of the stream and return the result.
+2. Functional interfaces: single abstract method 
    1. Function: R apply(T t), 
    2. Supplier: T get(),
    3. Predicate: boolean test(T t), 
    4. Consumer: void accept(T t), 
    5. BinaryOperator: T apply(T t1, T t2). It extends BiFunction: R apply(T t, U u)
-2. Lambdas
+2. Lambdas : express instances of FI, implement only abstract function
    1. forEach and filter 
+   2. Functionalities of lambda fn:
+      1. Enable to treat functionality as method argument, or code as data
+      2. Function created without belonging to any class
+      3. Lambda expr can be passed as an object and executed on demand => lambdas are lazy
+   3. Only use variable that are effectively final
 3. Arrays.sort using TimSort
 4. Collections class changes in java 1.8 like checkedMap (returns a dynamically typesafe view of the specified map) 
 5. Map

@@ -12,14 +12,14 @@ public class ParallelStreamsImpl {
         //Stream took time: 127.. Also order of execution is in order like 123456....
         //Parallel stream took time: 9 ...order of execution is NOT in order like 62636465666...
         long start = System.currentTimeMillis();
-        //IntStream.range(1, 100).forEach(System.out::print);
+        IntStream.range(1, 100).forEach(System.out::print);
         long end = System.currentTimeMillis();
 
         System.out.println("\nStream took time: "+ (end-start));
         System.out.println("==================================");
 
         start = System.currentTimeMillis();
-        //IntStream.range(1, 100).parallel().forEach(System.out::print);
+        IntStream.range(1, 100).parallel().forEach(System.out::print);
         end = System.currentTimeMillis();
 
         System.out.println("\nParallel stream took time: "+ (end-start));
@@ -48,6 +48,9 @@ public class ParallelStreamsImpl {
         System.out.println("==================================");
 
         IntStream.range(1, 10).parallel().forEach(x->System.out.println("Thread: "+Thread.currentThread().getName()+" : "+x));
+        System.out.println("==================================");
+
+        //IntStream.range(1, 10).parallel().forEachOrdered(x->System.out.println("Thread: "+Thread.currentThread().getName()+" : "+x));
 
     }
 }

@@ -64,7 +64,7 @@ public class StreamsImpl {
         //Step3: convert to stream of double
         //Step4: reduce to average salary => returns Optional
         //Step5: get value as double
-        double averageSalaryOfGradeAEmployees = EmployeeDao.getEmployees().stream()
+        double averageSalaryOfGradeAEmployees    = EmployeeDao.getEmployees().stream()
                 .filter(emp-> emp.getGrade().equalsIgnoreCase("A"))
                 .map(emp-> emp.getSalary())
                 .mapToDouble(salary-> salary)

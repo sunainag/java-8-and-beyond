@@ -1,4 +1,4 @@
-package com.lambda;
+package com.functionalInterface;
 
 import java.util.Arrays;
 import java.util.List;

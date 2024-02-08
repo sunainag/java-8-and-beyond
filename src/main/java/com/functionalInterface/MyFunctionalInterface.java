@@ -1,4 +1,4 @@
-package com.lambda;
+package com.functionalInterface;
 
 
 //not required to add the annotation; if only one abstract method-> FI
