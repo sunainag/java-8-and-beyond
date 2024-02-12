@@ -11,7 +11,6 @@ public class BookService {
 //        1. Comparator, implement compare(o1, o2) and then call Collections.sort(list, comparatorName), or
 //        2. create anonymous Comparator class, or
 //        3. use lambda
-
     }
 
     public static void main(String[] args) {

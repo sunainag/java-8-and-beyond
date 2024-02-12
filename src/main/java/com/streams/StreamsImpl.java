@@ -3,6 +3,9 @@ package com.streams;
 import com.commons.EmployeeDao;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamsImpl {
@@ -56,8 +59,15 @@ public class StreamsImpl {
         System.out.println(nums.stream().reduce(Integer::max).get());
 
         //example use reduce to find longest word length in list using:
-        List<String> words = Arrays.asList("asdas","sdSdfqsdf","asdas");
+        List<String> words = Arrays.asList("asdas","sdSdfqsdf","fsdas");
         System.out.println("Longest word is: "+ words.stream().reduce((word1, word2)-> word1.length()>word2.length()?word1:word2).get());
+
+        //Create Map from List
+        HashMap<String, Integer> res = words.stream().collect(Collectors.toMap(
+                                                                                Function.identity(), String::length,
+                                                                                (e1, e2) -> e1, HashMap::new)
+                                                              );
+        System.out.println("Elements in HashMap are : "+ res);
 
         //Step1: get employees with grade A
         //Step2: get salary of emp => data transformation
@@ -71,6 +81,36 @@ public class StreamsImpl {
                 .average()
                 .getAsDouble();
         System.out.println("Average salary: "+ averageSalaryOfGradeAEmployees);
+
+        //ways to create stream
+        //1. collection
+        list.stream();
+
+        //2. Sequential stream
+        Stream.of(1,3,4);
+
+        //3. Arrays.stream
+        Arrays.stream(args).iterator();
+
+        //4.
+        Stream.empty();
+
+        //5. The builder() method is used when the desired type should be additionally specified in the right part of the statement, otherwise the build() method will create an instance of the Stream.
+        Stream.Builder<String> builder = Stream.builder();
+        Stream<String> stream = builder.add("a").build();
+
+        //6.  iterate() method returns an infinite sequential ordered Stream
+        // produced by iterative application of a function f to an initial element seed
+        int seedValue = 2, limitTerms = 5;
+        Stream.iterate(2,(Integer n) -> n*n).limit(limitTerms).forEach(System.out::println);
+
+        //7.The generate() method accepts a Supplier for generating elements
+        // and the resulting stream is infinite.
+        // So to restrict it, specify the desired size or the generate() method will work until
+        // it reaches the memory limit.
+        Stream.generate(Math::random)
+                .limit(limitTerms)
+                .forEach(System.out::println);
 
     }
 }
