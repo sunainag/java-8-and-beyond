@@ -92,6 +92,9 @@ public class StreamsImpl {
         //3. Arrays.stream
         Arrays.stream(args).iterator();
 
+        int[] arr = {1,3,5,45,2,1};
+        System.out.println("Does array "+Arrays.toString(arr)+" contain number 5?: " +(Arrays.stream(arr).anyMatch(ele-> ele==5)));
+
         //4.
         Stream.empty();
 
@@ -112,5 +115,21 @@ public class StreamsImpl {
                 .limit(limitTerms)
                 .forEach(System.out::println);
 
+        List<String> listUseCollectors = Arrays.asList("a", "bb", "c", "d", "bb");
+        String result = listUseCollectors.stream()
+                .collect(Collectors.joining("","PRE-","-POST"));
+        System.out.println("Joining using collectors: "+ result);
+
+        Map<Integer, Set<String>> setFromList = listUseCollectors.stream()
+                .collect(Collectors.groupingBy(String::length, Collectors.toSet()));
+        setFromList.entrySet().forEach(entry-> System.out.print(entry+", "));
+
+        Map<Boolean, List<String>> listFromListUsingPredicate = listUseCollectors.stream()
+                .collect(Collectors.partitioningBy(s->s.length()>1));
+        listFromListUsingPredicate.entrySet().forEach(System.out::println);
+
+        List<Integer> numbers = Arrays.asList(42, 4, 2, 24);
+        Optional<Integer> min = numbers.stream().collect(Collectors.minBy(Integer::compareTo));
+        System.out.println(min.get());
     }
 }
